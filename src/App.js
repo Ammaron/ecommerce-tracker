@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Navigation from './components/Navigation';
+import Inventory from './components/Inventory/Inventory';
+import HRManagement from './components/HR/HRManagement';
 
 function App() {
+  const [activeTab, setActiveTab] = useState('Inventory');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container mx-auto p-4">
+      <h1 className="text-3xl font-bold mb-4 text-center">E-commerce Tracker</h1>
+      <Navigation activeTab={activeTab} setActiveTab={setActiveTab} />
+      {activeTab === 'Inventory' && <Inventory />}
+      {activeTab === 'HR Management' && <HRManagement />}
     </div>
   );
 }
